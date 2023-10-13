@@ -1,0 +1,244 @@
+class Character extends MovableObject {
+    height = 270;
+    width = 200;
+    y = 150;
+    speed = 10;
+
+    IMAGES_IDLE = [
+        'img/1.Sharkie/1.IDLE/1.png',
+        'img/1.Sharkie/1.IDLE/2.png',
+        'img/1.Sharkie/1.IDLE/3.png',
+        'img/1.Sharkie/1.IDLE/4.png',
+        'img/1.Sharkie/1.IDLE/5.png',
+        'img/1.Sharkie/1.IDLE/6.png',
+        'img/1.Sharkie/1.IDLE/7.png',
+        'img/1.Sharkie/1.IDLE/8.png',
+        'img/1.Sharkie/1.IDLE/9.png',
+        'img/1.Sharkie/1.IDLE/10.png',
+        'img/1.Sharkie/1.IDLE/11.png',
+        'img/1.Sharkie/1.IDLE/12.png',
+        'img/1.Sharkie/1.IDLE/13.png',
+        'img/1.Sharkie/1.IDLE/14.png',
+        'img/1.Sharkie/1.IDLE/15.png',
+        'img/1.Sharkie/1.IDLE/16.png',
+        'img/1.Sharkie/1.IDLE/17.png',
+        'img/1.Sharkie/1.IDLE/18.png'
+    ];
+
+    IMAGES_SWIMMING = [
+        'img/1.Sharkie/3.Swim/1.png',
+        'img/1.Sharkie/3.Swim/2.png',
+        'img/1.Sharkie/3.Swim/3.png',
+        'img/1.Sharkie/3.Swim/4.png',
+        'img/1.Sharkie/3.Swim/5.png',
+        'img/1.Sharkie/3.Swim/6.png'
+    ];
+
+
+    IMAGES_BUBBLE_TRAP = [
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png'
+    ];
+
+    IMAGES_FINSLAP = [
+        'img/1.Sharkie/4.Attack/Fin slap/1.png',
+        'img/1.Sharkie/4.Attack/Fin slap/4.png',
+        'img/1.Sharkie/4.Attack/Fin slap/5.png',
+        'img/1.Sharkie/4.Attack/Fin slap/6.png',
+        'img/1.Sharkie/4.Attack/Fin slap/7.png',
+        'img/1.Sharkie/4.Attack/Fin slap/8.png'
+    ];
+
+    IMAGES_BUBBLE_TRAP_POISON = [
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png'
+    ];
+
+    IMAGES_DEAD = [
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00000.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00001.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00002.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00003.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00004.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00005.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00006.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00007.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00008.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00009.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00010.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00011.png'
+    ];
+
+    IMAGES_HURT_POISENED = [
+        'img/1.Sharkie/5.Hurt/1.Poisoned/1.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/2.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/3.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/4.png'
+    ];
+
+    IMAGES_HURT_ELECTRICSHOCK= [
+        'img/1.Sharkie/5.Hurt/2.Electric shock/.o1.png',
+        'img/1.Sharkie/5.Hurt/2.Electric shock/.o2.png'
+    ];
+
+    world;
+    SWIMMING_SOUND = new Audio('audio/swimming.mp3');
+    FINSLAP_SOUND = new Audio('audio/fin-slap.mp3');
+    CHARACTER_DEAD = new Audio('audio/character-dying.mp3');
+    ISHURT = new Audio('audio/isHurt.mp3');
+  
+
+    constructor() {
+        super().loadImage('img/1.Sharkie/1.IDLE/1.png');
+        this.loadImages(this.IMAGES_IDLE);
+        this.loadImages(this.IMAGES_SWIMMING);
+        this.loadImages(this.IMAGES_BUBBLE_TRAP);
+        this.loadImages(this.IMAGES_BUBBLE_TRAP_POISON);
+        this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_HURT_POISENED);
+        this.loadImages(this.IMAGES_FINSLAP);
+        this.animate();
+        this.moveCharacter();
+    };
+
+    animate() {
+        let soundPlayed = false;
+        setInterval(() => {
+            if (this.isDead()) {
+                this.playDeathAnimation(this.IMAGES_DEAD);
+                if (!soundPlayed && sound) {
+                    this.CHARACTER_DEAD.play();
+                    soundPlayed = true;
+                }
+            } else if (this.isHurt()) {
+                this.playSwimmingAnimation(this.IMAGES_HURT_POISENED);
+                this.playIsHurtAudio();
+            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
+                this.playSwimmingAnimation(this.IMAGES_SWIMMING);
+            } else {
+                this.playSwimmingAnimation(this.IMAGES_IDLE);
+            }
+        }, 200)
+        setInterval(() => {
+            if (this.world.keyboard.SPACE) {
+                this.playSwimmingAnimation(this.IMAGES_BUBBLE_TRAP);
+            }
+        }, 1000/ 5) 
+
+        setInterval(() => {
+            if (this.world.keyboard.D && this.world.collectedPoisonbottles > 0) {
+                this.playSwimmingAnimation(this.IMAGES_BUBBLE_TRAP_POISON);
+            }
+        }, 1000 / 5)
+
+        setInterval(() => {
+            if (this.world.keyboard.S) {
+                this.playSwimmingAnimation(this.IMAGES_FINSLAP);
+                this.playFinSlapSound();
+            }
+        }, 1000/ 20);
+
+    };
+
+    moveCharacter() {
+        setInterval(() => {   
+            let isSwimmingSoundPlaying = false; 
+            if (this.isDead()) {
+                this.moveToSurfaceWhenDead();
+            } else if (this.world.keyboard.RIGHT && this.x < this.world.levelEnd_x) {      
+                    this.moveCharacterRight(isSwimmingSoundPlaying);
+                    if (this.world.keyboard.UP && this.y > -100){
+                        this.moveCharacterUp(isSwimmingSoundPlaying);
+                    }
+                    if (this.world.keyboard.DOWN && this.y < this.world.lvl1.levelBottom) {
+                        this.moveCharacterDown(isSwimmingSoundPlaying);
+                    }
+                } else if (this.world.keyboard.LEFT && this.x > 0) {                            
+                    this.moveCharacterLeft(isSwimmingSoundPlaying);
+                    if (this.world.keyboard.UP && this.y > -100){
+                        this.moveCharacterUp(isSwimmingSoundPlaying);
+                    }
+                    if (this.world.keyboard.DOWN && this.y < this.world.lvl1.levelBottom) {
+                        this.moveCharacterDown(isSwimmingSoundPlaying);
+                    }
+                } else if (this.world.keyboard.UP && this.y > -100) {                            //Hier wird ähnlich wie zuvor überprüft, ob die Taste "LEFT" auf der Tastatur gedrückt wurde (this.world.keyboard.LEFT ist wahr) und ob die X-Koordinate der Figur größer als Null ist (this.x > 0). 
+                    this.moveCharacterUp(isSwimmingSoundPlaying);
+                } else if (this.world.keyboard.DOWN && this.y < this.world.lvl1.levelBottom) {                            //Hier wird ähnlich wie zuvor überprüft, ob die Taste "LEFT" auf der Tastatur gedrückt wurde (this.world.keyboard.LEFT ist wahr) und ob die X-Koordinate der Figur größer als Null ist (this.x > 0). 
+                    this.moveCharacterDown(isSwimmingSoundPlaying);
+                } else {                                                                        //Wenn keine der Bedingungen für die Bewegung erfüllt ist, bedeutet das, dass weder "RIGHT" noch "LEFT" gedrückt wurde. In diesem Fall wird der Schwimmsound pausiert 
+                    this.SWIMMING_SOUND.pause();
+                    this.SWIMMING_SOUND.currentTime = 0;        
+                    isSwimmingSoundPlaying = false;                                             //isSwimmingSoundPlaying auf false gesetzt.
+                }
+           
+            this.world.camera_x = -this.x + 100;
+        }, 1000 / 60);
+    }
+
+    moveCharacterRight(isSwimmingSoundPlaying) {
+        this.x += this.speed;                                                      // Die X-Koordinate der Figur wird um ihre Geschwindigkeit erhöht, sodass sie nach rechts bewegt wird.
+        this.otherDirection = false;                                               // Die Eigenschaft otherDirection wird auf false gesetzt, was darauf hinweist, dass die Figur in die Richtung schaut, in die sie sich bewegt. 
+        if (!isSwimmingSoundPlaying) {                                              //Hier wird überprüft, ob der Schwimmsound bereits abgespielt wird. Wenn der Operator ! vor einer Bedingung steht, wird die Bedingung umgekehrt, also false. // Hier wird der Code ausgeführt, wenn isSwimmingSoundPlaying false ist
+            this.playSwimmingSound(isSwimmingSoundPlaying);
+        }
+    }
+
+    moveCharacterLeft(isSwimmingSoundPlaying) {
+        this.x -= this.speed;
+        this.otherDirection = true;
+        if (!isSwimmingSoundPlaying) {
+            this.playSwimmingSound(isSwimmingSoundPlaying);
+        }
+    }
+
+    moveCharacterUp(isSwimmingSoundPlaying) {
+        this.y -= this.speed;
+        this.rotation = -90;
+        if (!isSwimmingSoundPlaying) {
+            this.playSwimmingSound(isSwimmingSoundPlaying);
+        }
+    }
+
+    moveCharacterDown(isSwimmingSoundPlaying) {
+        this.y += this.speed;
+        this.rotation = 90;
+        if (!isSwimmingSoundPlaying) {
+            this.playSwimmingSound(isSwimmingSoundPlaying);
+        } 
+    }
+
+    playSwimmingSound(isSwimmingSoundPlaying) {
+        if (sound) {
+            this.SWIMMING_SOUND.play();
+            this.FINSLAP_SOUND.volume = 0.1;
+            isSwimmingSoundPlaying = true;
+        }
+        
+    }
+    playFinSlapSound() {
+        if (sound) {
+            this.FINSLAP_SOUND.play();
+            this.FINSLAP_SOUND.volume = 0.1;
+            this.FINSLAP_SOUND.playbackRate = 1;
+        }
+    }
+    playIsHurtAudio() {
+        if (sound){
+            this.ISHURT.play();
+        }
+    }
+   
+}
+

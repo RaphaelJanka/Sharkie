@@ -1,0 +1,379 @@
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+    .lose-screen {
+        width: 100%;
+    }
+    .win-screen {
+        width: 100%;
+    }
+    .menu {
+        width: 100%;
+    }
+    .try-again {
+        right: 255px;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .sharkie-movement {
+        width: 224px;
+    }
+    .arrow-keys {
+        width: 144px;
+    }
+    .jellyfish-info {
+        width: 80px;
+        margin-top: 43px;
+        margin-left: -34px;
+    }
+    .endboss-info {
+        width: 174px;
+        margin-top: -28px;
+        margin-left: -41px;
+    }
+    
+}
+@media (max-width: 666px) {
+    .turn {
+        display: flex;
+    }
+    h1 {
+        font-size: 64px !important;
+    }
+    .game-over-img {
+        height: 50px;
+    }
+    .restart {
+        left: 256px;
+    }
+    .barrier {
+        width: 256px;
+    }
+    .result-screen {
+        width: 256px;
+        right: 182px;
+    }
+    .coin {
+        height: 48px;
+    }
+    #finalScore {
+        top: 30px;
+        right: 84px;
+        font-size: 20px;
+    }
+    
+    .fs-responsive {
+        font-size: 24px;
+    }
+  
+}
+
+@media (max-width: 620px) {
+    .start {
+        font-size: 24px;
+        width: 120px;
+    }
+    .help {
+        font-size: 14px;
+        width: 50px;
+        height: 50px;
+    }
+    .mute {
+        height: 28px;
+    }
+    h1 {
+        font-size: 56px !important;
+    }
+    .restart {
+        font-size: 20px;
+        left: 245;
+        width: 120px;
+    }
+    .score {
+        width: 56px;
+        height: 56px;
+        font-size: 14px;
+        top: 10px;
+        left: 10px;
+    }
+    .sharkie-movement {
+        width: 196px;
+    }
+    .arrow-keys {
+        width: 120px;
+    }
+    .fs-32 {
+        font-size: 28px;
+    }
+    .attack-buttons {
+        font-size: 32px;
+        width: 57px;
+    }
+    .fish-info {
+        width: 70px;
+        margin-left: -58px;
+    }
+    .screen-mode {
+        right: 133px;
+        height: 25px;
+    }
+    .jellyfish-info {
+        width: 63px;
+        margin-top: 32px;
+        margin-left: -27px;
+    }
+    .space {
+        width: 190px;
+    }
+    .endboss-info {
+        width: 156px;
+        margin-top: -30px;
+        margin-left: -30px;
+    }
+    .fs-responsive {
+        font-size: 20px;
+    }
+}
+@media (max-width: 570px) {
+    .start {
+        font-size: 16px;
+        width: 88px;
+    }
+    .help {
+        font-size: 10px;
+        width: 40px;
+        height: 40px;
+        right: 10px;
+        top: 10px;
+    }
+    .mute {
+        height: 20px;
+        right: 66px;
+    }
+    h1 {
+        font-size: 48px !important;
+    }
+    .game-over-img {
+        height: 38px;
+    }
+    .restart {
+        bottom: 32px;
+        left: 220px;
+    }
+    .barrier {
+        width: 220px;
+    }
+    .result-screen {
+        width: 190px;
+    }
+    .coin {
+        height: 40px;
+    }
+    #finalScore {
+        top: 30px;
+        right: 48px;
+        font-size: 16px;
+    }
+    .sharkie-movement {
+        width: 170px;
+    }
+    .arrow-keys {
+        width: 104px;
+    }
+    .fs-32 {
+        font-size: 24px;
+    }
+    .info-buttons {
+        font-size: 20px;
+    }
+    .attack-buttons {
+        font-size: 28px;
+        width: 50px;
+    }
+    .fish-info {
+        width: 60px;
+        margin-top: 37px;
+        margin-left: -46px;
+    }
+    .screen-mode {
+        right: 100px;
+        height: 19px;
+        top: 17px;
+    }
+    .jellyfish-info {
+        width: 54px;
+        margin-top: 25px;
+        margin-left: -26px;
+    }
+    .space {
+        width: 160px;
+    }
+    .endboss-info {
+        width: 144px;
+        margin-top: -35px;
+        margin-left: -26px;
+    }
+    .subline {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 530px) {
+    .fs-responsive {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 470px) {
+    h1 {
+        font-size: 40px !important;
+    }
+    .message-box {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+    .restart {
+        font-size: 16px;
+        width: 96px;
+        left: 188px;
+    }
+    .barrier {
+        width: 160px;
+    }
+    .result-screen {
+        width: 160px;
+        right: 130px;
+    }
+    .coin {
+        height: 32px;
+    }
+    #finalScore {
+        top: 16px;
+        font-size: 13px;
+    }
+    .sharkie-movement {
+        width: 120px;
+    }
+    .arrow-keys {
+        width: 70px;
+    }
+    .fs-32 {
+        font-size: 16px;
+    }
+    .info-buttons {
+        font-size: 16px;
+        width: 64px;
+    }
+    .attack-buttons {
+        font-size: 24px;
+        width: 43px;
+    }
+    .fish-info {
+        width: 36px;
+        margin-top: 22px;
+        margin-left: -34px;
+    }
+    .jellyfish-info {
+        width: 34px;
+        margin-top: 18px;
+        margin-left: -15px;
+    }
+    .space {
+        width: 120px;
+    }
+    .endboss-info {
+        width: 116px;
+        margin-top: -48px;
+        margin-left: -15px;
+    }
+    .mt-80 {
+        margin-top: 50px;
+    }
+    .subline {
+        font-size: 12px;
+    }
+    .fs-responsive {
+        font-size: 14px;
+    }
+}
+@media (max-width: 400px) {
+    .start {
+        font-size: 16px;
+        width: 88px;
+    }
+    .help {
+        font-size: 9px;
+        width: 34px;
+        height: 34px;
+    }
+    .mute {
+        height: 16px;
+        right: 56px;
+    }
+    h1 {
+        font-size: 32px !important;
+    }
+    .game-over-img {
+        height: 24px;
+    }
+    .score {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+    }
+    .sharkie-movement {
+        width: 80px;
+    }
+    .arrow-keys {
+        width: 50px;
+    }
+    .info-buttons {
+        font-size: 12px;
+        width: 64px;
+    }
+    .attack-buttons {
+        font-size: 20px;
+        width: 37px;
+    }
+    .fish-info {
+        width: 21px;
+        margin-top: 17px;
+        margin-left: -22px;
+    }
+    .jellyfish-info {
+        width: 21px;
+        margin-top: 13px;
+        margin-left: -10px;
+    }
+    .endboss-info {
+        width: 87px;
+        margin-top: -25px;
+        margin-left: -7px;
+    }
+    .subline {
+        font-size: 8px;
+    }
+    .mt-responsive {
+        margin-top: 30px;
+    }
+    .screen-mode {
+        right: 86px;
+        height: 15px;
+    }
+    .fs-responsive {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    canvas {
+        height: 100vh;
+    }
+    .game-content {
+        height: 100vh;
+    }
+    
+}

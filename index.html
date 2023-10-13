@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharkie</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaquery.css">
+    <link rel="icon" href="img/1.Sharkie/1.IDLE/1.png">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="models/drawable-object.class.js"></script>
+    <script src="models/movable-object.class.js"></script>
+    <script src="models/status-bar-life.class.js"></script>
+    <script src="models/status-bar-coins.class.js"></script>
+    <script src="models/status-bar-poison.class.js"></script>
+    <script src="models/status-bar-endboss.class.js"></script>
+    <script src="models/world.class.js"></script>
+    <script src="models/background-objects.class.js"></script>
+    <script src="models/water-floating.class.js"></script>
+    <script src="models/character.class.js"></script>
+    <script src="models/bubble.class.js"></script>
+    <script src="models/poisonbubble.class.js"></script>
+    <script src="models/puffer-fishes/puffer-fish-orange.class.js"></script>
+    <script src="models/puffer-fishes/puffer-fish-green.class.js"></script>
+    <script src="models/puffer-fishes/puffer-fish.deadly.class.js"></script>
+    <script src="models/jelly-fishes/jelly-fish-purple.class.js"></script>
+    <script src="models/jelly-fishes/jelly-fish-yellow.js"></script>
+    <script src="models/jelly-fishes/jelly-fish-deadly-deadly-pink.class.js"></script>
+    <script src="models/jelly-fishes/jelly-fish-deadly-deadly-green.class.js"></script>
+    <script src="models/coins.class.js"></script>
+    <script src="models/poison-bottle.class.js"></script>
+    <script src="models/endboss.class.js"></script>
+    <script src="models/level.class.js"></script>
+    <script src="levels/level1.js"></script>
+    <script src="models/keyboard.class.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/game.js"></script>
+</head>
+<body onload="initMobile()">
+    <audio id="backgroundMusic" src="audio/background_videogame.mp3" loop="loop"></audio>
+    <div class="game-content d-flex" id="fullscreen">
+        <canvas id="canvas" width="720" height="400"></canvas>
+        <img id="fullscreen_img" src="img/full_screen.png" alt="fullscreen" class="screen-mode position-absolute" onclick="toggleFullscreen()">
+        <img id="sound" src="img/mute.png" alt="mute" class="position-absolute mute" onclick="playAudio()">
+        <div id="startscreen" class="start-screen">
+            <div class="menu d-flex flex-column justify-content-between">
+                <div class="d-flex justify-content-center">
+                    <h1>Sharkie</h1>
+                </div>
+                <button class="help" onclick="showInstructions()">
+                    <span>Help</span>
+                </button>
+                <div class="d-flex flex-column align-items-center mb-50">
+                    <div class="bubble-container d-flex flex-column align-items-center">
+                        <div class="d-flex w-100 justify-content-center">
+                            <img id="startBubble1" src="img/1.Sharkie/4.Attack/Bubble trap/Bubble.png" alt="" class="bubble-loading-2 hidden">
+                        </div>
+                        <div class="d-flex w-100 justify-content-center">
+                            <img id="startBubble" src="img/1.Sharkie/4.Attack/Bubble trap/Bubble.png" alt="" class="bubble-loading-1 hidden">
+                        </div>
+                        <div class="d-flex w-100 justify-content-center">
+                            <img id="startBubble2" src="img/1.Sharkie/4.Attack/Bubble trap/Bubble.png" alt="" class="bubble-loading-3 hidden">
+                        </div>
+                    </div>
+                    <button class="d-flex justify-content-center align-items-center start" onclick="startGame()">
+                        <span>Start</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="info" class="instructions position-absolute d-none"></div>
+        
+        <div id="gameOver" class="lose-screen position-absolute d-flex justify-content-around align-items-center flex-column d-none">
+            <img src="img/6.Botones/Tittles/Game Over/Recurso 11.png" alt="" class="game-over-img">
+            <button class="try-again d-flex justify-content-center align-items-center" onclick="restartGame()">
+                <span>Try Again</span>
+            </button>
+        </div>
+        <div id="gameWon" class="win-screen position-absolute d-none">
+            <div class="win-background d-flex justify-content-around flex-column align-items-center">
+                <div id="result" class="result-screen rounded-5 hidden position-relative">
+                    <img src="img/3. Background/Barrier/2.png" alt="" class="barrier">
+                    <div id="finalScore" class="d-flex position-absolute"></div>
+                </div>
+                <button class="restart d-flex justify-content-center align-items-center" onclick="restartGame()">
+                    <span>Restart</span>
+                </button>
+                <button class=" d-flex justify-content-center align-items-center position-absolute score" onclick="showScore()">
+                    <span>Score</span>
+                </button>
+                
+            </div>
+        </div>
+        <div id="turnDeviceScreen" class="turn align-items-center justify-content-center">
+            <div class="message-box d-flex align-items-center">
+                <span>Please turn your device</span>
+            </div>
+        </div>
+
+        <section id="mobile" class="mobile-buttons-container d-flex justify-content-between">
+            <div class="d-flex flex-column movement-container">
+                <div class="d-flex justify-content-center">
+                    <button id="up_button" class="mobile-buttons d-flex justify-content-center align-items-center up">
+                        <span>></span>
+                    </button>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button id="left_button" class="mobile-buttons d-flex justify-content-center align-items-center left">
+                        <span>></span>
+                    </button>
+                    <button id="right_button" class="mobile-buttons d-flex justify-content-center align-items-center">
+                        <span>></span>
+                    </button>
+                </div>
+                <div class="d-flex justify-content-center">    
+                    <button id="down_button" class="mobile-buttons d-flex justify-content-center align-items-center down">
+                        <span>></span>
+                    </button>
+                </div>
+            </div>
+            <div class="attack-container d-flex align-items-center">
+                <button id="slap_button" class="attack-buttons-mobile d-flex justify-content-center align-items-center">
+                    <img src="img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.png" alt="" class="slap-button">
+                </button>
+                <button id="bubble_button" class="attack-buttons-mobile d-flex justify-content-center align-items-center">
+                    <img src="img/1.Sharkie/4.Attack/Bubble trap/Bubble.png" alt="" class="bubble-button">
+                </button>
+                <button id="poison_button" class="attack-buttons-mobile d-flex justify-content-center align-items-center">
+                    <img src="img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png" alt="" class="poison-button">
+                </button>
+            </div>
+        </section>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,366 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('img/3. Background/Layers/5. Water/D1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    font-family:'Luckiest Guy' !important;
+    color: white !important;
+}
+
+canvas {
+    background-color: black;
+    box-shadow: 0px 0px 26px 10px white;
+    display: block;
+
+}
+h1 {
+    letter-spacing: 3px;
+    text-shadow: 4px 6px 2px rgba(0, 0, 0, 0.5);
+    left: calc(40% - 80px);
+    font-size: 70px !important;
+    animation: move 3s ease-in-out infinite; 
+}
+.game-content {
+    position: relative;
+    display: block;
+}
+.start-screen {
+    background-image: url('img/3. Background/Mesa de trabajo 1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+.menu {
+    height: 100%;
+    width: 100%;
+}
+.mb-50 {
+    margin-bottom: 50px;
+}
+.bubble-container {
+    width: 170px;
+    margin-left: 30%;
+    margin-bottom: 12px;
+}
+.start {
+    cursor: pointer;
+    background-color: #7fffe0;
+    color: #531a82 !important;
+    border-radius: 14px;
+    border: 3px solid white;
+    width: 170px;
+    font-size: 32px;
+    margin-left: 30%;
+}
+.start:hover {
+    background-color: #531a82;
+    color: white !important;
+    box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.8);
+}
+
+.help {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    background-color: #7fffe0;
+    border-radius: 50px;
+    color: #531a82;
+    border: 3px solid white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.help:hover {
+    background-color: #531a82;
+    color: white !important;
+    box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.8);
+}
+.help:active {
+    background-color: #431669;
+}
+.instructions {
+    background-image: url('img/3. Background/Layers/5. Water/D1.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+.bubble-loading-1 {
+    width: 20px;
+    margin-left: 32px;
+    margin-top: 12px;
+}
+.bubble-loading-2 {
+    width: 16px;
+}
+.bubble-loading-3 {
+    width: 26px;
+    margin-right: 32px;
+}
+.lose-screen {
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+.game-over-img {
+    height: 56px;
+}
+.try-again {
+    background-color: #7fffe0;
+    color: #531a82 !important;
+    width: 170px;
+    font-size: 32px;
+    border-radius: 10px;
+    border: 3px solid white;
+    cursor: pointer;
+}
+.try-again:hover {
+    background-color: #531a82;
+    color: white !important;
+    box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.8);
+}
+.try-again:active {
+    background-color: #431669;
+}
+.win-screen {
+    height: 100%;
+    width: 100%;
+    background-image: url('img/3. Background/Layers/5. Water/D1.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    top: 0;
+    z-index: 1;
+}
+.win-background {
+    background-image: url('img/6.Botones/Tittles/You win/Mesa de trabajo 1.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    gap: 70px;
+}
+.winning-img {
+    width: 100%;
+    height: 100%;
+}
+.restart {
+    background-color: #7fffe0;
+    color: #531a82 !important;
+    width: 144px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: 3px solid white;
+    cursor: pointer;
+   
+}
+.restart:hover {
+    background-color: #531a82;
+    color: white !important;
+    box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.8);
+}
+.restart:active {
+    background-color: #431669;
+}
+.score {
+    width: 64px;
+    height: 64px;
+    background-color: #7fffe0;
+    border-radius: 50px;
+    color: #531a82;
+    border: 3px solid white;
+    font-size: 16px;
+    cursor: pointer;
+    top: 20px;
+    left: 20px;
+}
+.score:hover {
+    background-color: #531a82;
+    color: white !important;
+    box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.8);
+}
+.score:active {
+    background-color: #431669;
+}
+.result-screen {
+    width: 300px;
+    height: 140px;
+}
+.hidden {
+    visibility: hidden;
+}
+.barrier {
+    width: 300px;
+}
+.mute {
+    height: 32px;
+    top: 16px;
+    right: 90px;
+    z-index: 2;
+    filter: invert(100%);
+    cursor: pointer;
+}
+.mute:hover {
+    filter: invert(100%) drop-shadow(2px 8px 4px rgba(0, 0, 0, 0.543));
+}
+
+.coin {
+    height: 56px;
+}
+#finalScore {
+    top: 35px;
+    right: 108px;
+    font-size: 24px;
+}
+.turn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(15px);
+    z-index: 3;
+    display: none;
+}
+.message-box {
+    padding: 10px 16px;
+    border-radius: 10px;
+    background-color: #7fffe0d4;
+    color: #531a82 !important;
+    border: 3px solid #ffffffcf;
+}
+.screen-mode {
+    height: 28px;
+    top: 18px;
+    z-index: 2;
+    right: 140px;
+    cursor: pointer;
+}
+.screen-mode:hover {
+    filter: drop-shadow(2px 6px 4px rgb(0, 0, 0));
+}
+.hover-buttons:hover {
+    background-color: #531a82;
+    color: white;
+    box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.8);
+}
+.hover-buttons:active {
+    background-color: #431669;
+}
+.fs-responsive {
+    font-size: 24px;
+}
+/* ---------------------------- help-section ---------------------------------- */
+.back {
+    background-color: #7fffe0;
+    width: 33px;
+    height: 32px;
+    color: #531a82;
+    border-radius: 30px;
+    border: 2px solid white;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.back:hover {
+    background-color: #531a82;
+    color: white;
+    box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.8);
+}
+.back:active {
+    background-color: #431669;
+}
+.movement {
+    width: 100%;
+    height: 100%;
+}
+.sharkie-movement {
+    width: 260px;
+}
+.width-50 {
+    width: 50%;
+}
+.arrow-keys {
+    width: 170px;
+}
+.mt-80 {
+    margin-top: 80px;
+}
+.fs-32 {
+    font-size: 32px;
+}
+.info-buttons {
+    background-color: #7fffe0;
+    font-size: 24px;
+    color: #531a82;
+    border: 3px solid white;
+    width: 80px;
+    cursor: pointer;
+}
+.attack-buttons {
+    background-color: #7fffe0;
+    font-size: 40px;
+    color: #531a82;
+    border: 3px solid white;
+    width: 67px;
+    cursor: pointer;
+}
+.fish-info{
+    width: 92px;
+    margin-top: 50px;
+    margin-left: -72px;
+}
+.space {
+    width: 211px;
+}
+.jellyfish-info {
+    width: 92px;
+    margin-top: 50px;
+    margin-left: -40px;
+}
+.endboss-info {
+    width: 199px;
+    margin-top: -28px;
+    margin-left: -41px;
+
+}
+.gap-60 {
+    gap: 60px;
+}
+
+.canvas-style {
+    width: 100%;
+    height: 100%;
+}
+/* ---------------------------------------------------------------------------------------------- */
+@keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px); 
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

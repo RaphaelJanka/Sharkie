@@ -1,0 +1,271 @@
+let canvas; // canvas wird an eine Variable gebunden
+let world;
+let keyboard = new Keyboard();
+let sound = false;
+
+function init() {
+    canvas = document.getElementById('canvas');
+}
+
+function startGame() {
+    hideStartScreen();
+    initLevel();
+    world = new World(canvas, keyboard);
+
+}
+
+
+window.addEventListener("keydown", (event) => {
+    if(event.keyCode == 38) {
+        keyboard.UP = true;
+    }
+    if(event.keyCode == 40) {
+        keyboard.DOWN = true;
+    }
+    if(event.keyCode == 39) {
+        keyboard.RIGHT = true;
+    }
+    if(event.keyCode == 37) {
+        keyboard.LEFT = true;
+    }
+    if(event.keyCode == 32) {
+        keyboard.SPACE = true;
+    }
+    if(event.keyCode == 68) {
+        keyboard.D = true;
+    }
+    if(event.keyCode == 83) {
+        keyboard.S = true;
+    }
+});
+
+window.addEventListener("keyup", (event) => {
+    if(event.keyCode == 38) {
+        keyboard.UP = false;
+    }
+    if(event.keyCode == 40) {
+        keyboard.DOWN = false;
+    }
+    if(event.keyCode == 39) {
+        keyboard.RIGHT = false;
+    }
+    if(event.keyCode == 37) {
+        keyboard.LEFT = false;
+    }
+    if(event.keyCode == 32) {
+        keyboard.SPACE = false;
+    }
+    if(event.keyCode == 68) {
+        keyboard.D = false;
+    }
+    if(event.keyCode == 83) {
+        keyboard.S = false;
+    }
+
+});
+
+function hideStartScreen() {
+    let start = document.getElementById('startscreen');
+    start.style = 'display: none';
+}
+
+function showInstructions() {
+    let instruction = document.getElementById('info');
+    instruction.classList.remove('d-none');
+    renderInfoMovement();
+}
+
+function renderInfoMovement() {
+    let instruction = document.getElementById('info');
+    instruction.innerHTML = '';
+    instruction.innerHTML += /*html*/ `
+        <div class="movement">
+            <div class="d-flex">
+                <div class="d-flex width-50 align-items-center justify-content-center">
+                    <img src="img/1.Sharkie/3.Swim/3.png" alt="sharkie-swimming" class="sharkie-movement">
+                </div>
+                <div class="d-flex width-50 flex-column align-items-center justify-content-center gap-4">
+                    <div class="back d-flex justify-content-center align-items-center" onclick="hideInstructions()">
+                        <span>X</span>
+                    </div>
+                    <img src="img/6.Botones/Key/arrow keys.png" alt="arrow keys" class="arrow-keys mt-80">
+                    <span class="fs-32">Move</span>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+                <div class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackFinSlap()">
+                    <span>Next</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderInfoAttackFinSlap() {
+    let instruction = document.getElementById('info');
+    instruction.innerHTML = '';
+    instruction.innerHTML += /*html*/ `
+        <div class="movement">
+            <div class="d-flex">
+                <div class="d-flex width-50 align-items-center justify-content-center">
+                    <img src="img/1.Sharkie/4.Attack/Fin slap/5.png" alt="sharkie-fin-slap" class="sharkie-movement">
+                    <img src="img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.3.png" alt="pufferfish-orange" class="fish-info">
+                </div>
+                <div class="d-flex width-50 flex-column align-items-center justify-content-center gap-4">
+                    <div class="back d-flex justify-content-center align-items-center" onclick="hideInstructions()">
+                        <span>X</span>
+                    </div>
+                    <div class="attack-buttons rounded-3 d-flex justify-content-center align-items-center mt-80">
+                        <span>S</span>
+                    </div>
+                    <span class="fs-32">Fin Slap</span>
+                </div>
+            </div>
+            <div class="d-flex gap-5 justify-content-center mt-3">
+                <div class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoMovement()">
+                    <span>Back</span>
+                </div>
+                <div class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackBubble()">
+                    <span>Next</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderInfoAttackBubble() {
+    let instruction = document.getElementById('info');
+    instruction.innerHTML = '';
+    instruction.innerHTML += /*html*/ `
+        <div class="movement">
+            <div class="d-flex">
+                <div class="d-flex width-50 align-items-center justify-content-center">
+                    <img src="img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png" alt="sharkie-fin-slap" class="sharkie-movement">
+                    <img src="img/2.Enemy/2 Jelly fish/Dead/green/g1.png" alt="jellyfish" class="jellyfish-info">
+                </div>
+                <div class="d-flex width-50 flex-column align-items-center justify-content-center gap-4">
+                    <div class="back d-flex justify-content-center align-items-center" onclick="hideInstructions()">
+                        <span>X</span>
+                    </div>
+                    <img src="img/6.Botones/Key/Space Bar key.png" alt="space" class="space mt-80">
+                    <span class="fs-32">Shoot Bubble</span>
+                </div>
+            </div>
+            <div class="d-flex gap-5 justify-content-center mt-3">
+                <div class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackFinSlap()">
+                    <span>Back</span>
+                </div>
+                <div class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackPoison()">
+                    <span>Next</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderInfoAttackPoison() {
+    let instruction = document.getElementById('info');
+    instruction.innerHTML = '';
+    instruction.innerHTML += /*html*/ `
+        <div class="movement">
+            <div class="d-flex">
+                <div class="d-flex width-50 align-items-center justify-content-center">
+                    <img src="img/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png" alt="sharkie-fin-slap" class="sharkie-movement">
+                    <img src="img/2.Enemy/3 Final Enemy/Hurt/2.png" alt="endboss" class="endboss-info">
+                </div>
+                <div class="d-flex width-50 flex-column align-items-center justify-content-center gap-4">
+                    <div class="back d-flex justify-content-center align-items-center" onclick="hideInstructions()">
+                        <span>X</span>
+                    </div>
+                    <div class="attack-buttons rounded-3 d-flex justify-content-center align-items-center mt-80 mt-responsive">
+                        <span>D</span>
+                    </div>
+                    <div class="d-flex flex-column align-items-center justify-content-center">
+                        <span class="fs-32 fs-responsive">Shoot Poison Bubble</span>
+                        <span class="subline">(For Endboss)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex gap-5 justify-content-center mt-3">
+                <div class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackBubble()">
+                    <span>Back</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+
+function hideInstructions() {
+    let instructions = document.getElementById('info');
+    instructions.classList.add('d-none');
+}
+
+function restartGame() {
+    location.reload();
+}
+
+
+function playAudio() {
+    let audio = document.getElementById('backgroundMusic');
+    let img = document.getElementById('sound');
+    if (img.getAttribute('src') === 'img/mute.png') {
+        img.setAttribute('src', 'img/volume.png');
+        audio.play();
+        audio.volume = 0.3;
+        sound = true;
+    } else if (img.getAttribute('src') === 'img/volume.png') {
+        img.setAttribute('src', 'img/mute.png');
+        audio.pause();
+        sound = false;
+    }
+}
+
+function showScore() {
+    let score = document.getElementById('result');
+    score.classList.toggle('d-none');
+    renderScore();
+}
+
+function renderScore() {
+    let result = document.getElementById('finalScore');
+    result.innerHTML = '';
+    result.innerHTML += /*html*/ `
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <img src="img/4. Marcadores/1. Coins/3.png" alt="coin" class="coin">
+            <span>${world.coinCounter}</span>
+        </div>
+    `;
+}
+
+function toggleFullscreen() {
+    let img = document.getElementById('fullscreen_img');
+    let content = document.getElementById('fullscreen')
+    if (img.getAttribute('src') === 'img/full_screen.png') {
+        img.setAttribute('src', 'img/small_screen.png');
+        enterFullscreen(content)
+    } else if (img.getAttribute('src') === 'img/small_screen.png') {
+        img.setAttribute('src', 'img/full_screen.png');
+        exitFullscreen();
+    }
+}
+
+function enterFullscreen(element) {
+    if(element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if(element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+      element.msRequestFullscreen();
+    } else if(element.webkitRequestFullscreen) {  // iOS Safari
+      element.webkitRequestFullscreen();
+    }
+  }
+
+  function exitFullscreen() {
+    if(document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if(document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+  
+  

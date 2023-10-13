@@ -1,0 +1,288 @@
+class World {
+    character = new Character(); 
+    lvl1 = level1;
+    levelEnd_x = 720*15;
+    ctx;
+    canvas;
+    keyboard;
+    camera_x = 0;
+    statusBarLife = new StatusBarLife();
+    statusBarCoin = new StatusBarCoins();
+    statusBarPoison = new StatusBarPoison();
+    bubble = [];
+    poisonBubble = [];
+    collectedPoisonbottles = 0;
+    BUBBLE_SHOT = new Audio('audio/bubble-shot.mp3');
+    BUBBLE_POP = new Audio('audio/bubble-pop.mp3');
+    COIN_SOUND = new Audio('audio/coin.mp3');
+    POISON_BOTTLE_SOUND = new Audio('audio/collecting-poison-bottle.mp3');
+    coinCounter = 0;
+    enemyCounter = 0;
+  
+
+
+    constructor(canvas, keyboard) { // Hier wurde nun das Canvas hineingegeben.
+        this.ctx = canvas.getContext('2d');
+        this.canvas = canvas;
+        this.keyboard  = keyboard;
+        this.create();
+        this.setWorld();
+        this.swim();
+        this.attackWithBubbles();
+    }; 
+
+    setWorld() {    //this = jeweilige Class (hier World)
+        this.character.world = this; //Insgesamt ermöglicht die Zuweisung dem Charakter, Informationen über die aktuelle Spielwelt zu erhalten und auf diese zuzugreifen, indem er direkt auf die Methoden und Eigenschaften der World-Instanz verweist, in der er sich befindet.
+    };
+
+
+
+    swim() {
+        setInterval(() => {
+           this.checkCollisionOfCharacterWithPufferFish();
+           this.checkCollisionOfCharacterWithJellyfish();
+           this.checkJellyfishHitByBubble();
+           this.checkPufferfishGotSlapped();
+           this.checkCollectedCoins();
+           this.checkCollectedPoisonBottles()
+           this.checkEndbossHitByPoisonBubble();
+           this.checkCollisionOfCharacterWithEndboss();
+           this.checkEndbossIsCollidingWithCharacter();
+           this.showGameOverScreen();
+        }, 200);
+    }
+   
+
+    attackWithBubbles() {
+        setInterval(() => {
+            this.pushBubbles();
+            this.pushPoisonBubbles();
+        }, 750);
+    }
+
+    
+    checkCollisionOfCharacterWithPufferFish() {
+        this.lvl1.pufferfishes.forEach((enemy) => {
+            if (!enemy.isDead() && this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBarLife.setPercentage(this.character.energy);
+            }
+        });
+    }
+
+    
+    checkCollisionOfCharacterWithJellyfish() {
+        this.lvl1.jellyfishes.forEach((enemy) => {
+            if (!enemy.isDead() && this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBarLife.setPercentage(this.character.energy);
+            }
+        });
+    }
+
+    checkCollisionOfCharacterWithEndboss() {
+        this.lvl1.boss.forEach((boss) => {
+            if (!boss.isDead() && this.character.isColliding(boss)) {
+                this.character.hitByBoss();
+                this.statusBarLife.setPercentage(this.character.energy);
+            }
+        })
+    }
+
+
+
+    pushBubbles() {
+        if (this.keyboard.SPACE) {
+            let bubble = new Bubble(this.character.x, this.character.y + 90);
+            this.bubble.push(bubble);
+            this.playSound(this.BUBBLE_SHOT);
+            
+        }
+    }
+    pushPoisonBubbles() {
+        if (this.keyboard.D && this.collectedPoisonbottles > 0) {
+            let greenbubble = new PoisonBubble(this.character.x, this.character.y + 90);
+            this.poisonBubble.push(greenbubble);
+            this.collectedPoisonbottles -= 1;
+            this.character.isUsingBottles();
+            this.statusBarPoison.setPercentage(this.character.collectedBottles);
+            this.playSound(this.BUBBLE_SHOT);
+        }
+    }
+
+    checkJellyfishHitByBubble() {
+        setInterval(() => {
+            this.lvl1.jellyfishes.forEach((enemy) => {
+                this.bubble.forEach((bubble) => {
+                    if (enemy.isColliding(bubble)) {
+                        enemy.hitEnemy();
+                        enemy.energy;
+                        this.removeBubble(bubble);
+                        this.playSound(this.BUBBLE_POP);
+                    }
+                });
+            });
+        });
+    }
+
+    checkPufferfishGotSlapped() {
+        setInterval(() => {
+            this.lvl1.pufferfishes.forEach((fish) => {
+                if (this.keyboard.S && fish.isColliding(this.character)) {
+                    fish.hitEnemy();
+                    fish.energy;
+                }
+            })
+        });
+    }
+    checkEndbossHitByPoisonBubble() {
+        setInterval(() => {
+            this.lvl1.boss.forEach((boss) => {
+                this.poisonBubble.forEach((bubble) => {
+                    if (boss.isColliding(bubble)) {
+                        boss.hitEndboss();
+                        boss.energy;
+                        this.removePoisonBubble(bubble);
+                        this.playSound(this.BUBBLE_POP);
+                    }
+                })
+            })
+        });
+    }
+
+    checkEndbossIsCollidingWithCharacter() {
+        setInterval(() => {
+            this.lvl1.boss.forEach((boss) => {
+                if (boss.isColliding(this.character)) {
+                    boss.isAttackingCharacter();
+                }
+            })
+        });
+    }
+
+    checkCollectedCoins() {
+        setInterval(() => {
+            this.lvl1.coins.forEach((coin) => {
+                if (this.character.isColliding(coin)) {
+                    this.character.isCollectingCoins();
+                    this.removeCoin(coin);
+                    this.statusBarCoin.setPercentage(this.character.collectedCoins);
+                    this.playSound(this.COIN_SOUND);
+                    this.COIN_SOUND.volume = 0.2;
+                    this.coinCounter++;
+                }
+            })
+        }); 
+    }
+
+    checkCollectedPoisonBottles() {
+        setInterval(() => {
+            this.lvl1.poisonBottles.forEach((bottle) => {
+                if(this.character.isColliding(bottle)) {
+                    this.character.isCollectingBottle();
+                    this.removePoisonBottle(bottle);
+                    this.collectedPoisonbottles += 1;
+                    this.statusBarPoison.setPercentage(this.character.collectedBottles);
+                    this.playSound(this.POISON_BOTTLE_SOUND);
+                    this.POISON_BOTTLE_SOUND.volume = 0.2;
+                }
+            })
+        });
+    }
+
+    removeBubble(bubble) {
+        let index = this.bubble.indexOf(bubble);
+        this.bubble.splice(index, 1);
+    };
+    removePoisonBubble(bubble) {
+        let index = this.poisonBubble.indexOf(bubble);
+        this.poisonBubble.splice(index, 1);
+    }
+
+    removeCoin(coin) {
+        let index = this.lvl1.coins.indexOf(coin);
+        this.lvl1.coins.splice(index, 1);
+    };
+    removePoisonBottle(bottle) {
+        let index = this.lvl1.poisonBottles.indexOf(bottle);
+        this.lvl1.poisonBottles.splice(index, 1);
+    };
+
+    playSound(audio) {
+        if (sound) {
+            audio.play();
+        }
+    }
+
+
+    
+    create() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Zum Löschen der vorherigen Position des Canvas
+        this.ctx.translate(this.camera_x, 0);
+
+        this.addObjectsToMap(this.lvl1.backgroundObjects);
+
+        this.ctx.translate(-this.camera_x, 0); //Back
+        this.addToMap(this.statusBarPoison);
+        this.addToMap(this.statusBarLife);
+        this.addToMap(this.statusBarCoin);
+        this.ctx.translate(this.camera_x, 0); //Forwards
+
+        this.addObjectsToMap(this.lvl1.light);
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.bubble);
+        this.addObjectsToMap(this.poisonBubble);
+        this.addObjectsToMap(this.lvl1.pufferfishes);
+        this.addObjectsToMap(this.lvl1.jellyfishes);
+        this.addObjectsToMap(this.lvl1.coins);
+        this.addObjectsToMap(this.lvl1.poisonBottles);
+        this.addObjectsToMap(this.lvl1.boss);
+
+        this.ctx.translate(-this.camera_x, 0);
+
+        // create() wird immer wieder ausgeführt
+        let self = this; // da "this innerhalb der function nicht erkannt wird, erstellt man eine variable mit dem Wert this"
+        requestAnimationFrame(function() {
+            self.create();
+        });
+        
+    };
+
+    addObjectsToMap(objects) {
+        objects.forEach(o => {
+            this.addToMap(o);
+        })
+    };
+
+    addToMap(movableObject) {
+        if(movableObject.otherDirection) {
+            this.flipImage(movableObject)
+        }
+        movableObject.draw(this.ctx);
+        if (movableObject.otherDirection) {
+            this.flipImageBack(movableObject);
+        }
+    };
+
+    flipImage(movableObject) {
+            this.ctx.save(); 
+            this.ctx.translate(movableObject.width, 0); 
+            this.ctx.scale(-1, 1); 
+            movableObject.x = movableObject.x * -1;
+    };
+
+    flipImageBack(movableObject) {
+        movableObject.x = movableObject.x * -1;
+            this.ctx.restore();
+    }
+
+    showGameOverScreen() {
+        let gameOver = document.getElementById('gameOver');
+        if (this.character.energy == 0) {
+            gameOver.classList.remove('d-none');
+        }
+    }
+
+    
+
+}
