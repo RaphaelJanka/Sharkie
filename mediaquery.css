@@ -18,6 +18,9 @@
 
 
 @media (max-width: 700px) {
+    .turn {
+        display: flex;
+    }
     .sharkie-movement {
         width: 224px;
     }
@@ -34,12 +37,14 @@
         margin-top: -28px;
         margin-left: -41px;
     }
-    
-}
-@media (max-width: 666px) {
     .turn {
         display: flex;
     }
+    
+}
+
+
+@media (max-width: 666px) {
     h1 {
         font-size: 64px !important;
     }
@@ -70,6 +75,7 @@
     }
   
 }
+
 
 @media (max-width: 620px) {
     .start {
@@ -137,6 +143,8 @@
         font-size: 20px;
     }
 }
+
+
 @media (max-width: 570px) {
     .start {
         font-size: 16px;
@@ -221,11 +229,13 @@
     }
 }
 
+
 @media (max-width: 530px) {
     .fs-responsive {
         font-size: 16px;
     }
 }
+
 
 @media (max-width: 470px) {
     h1 {
@@ -299,6 +309,8 @@
         font-size: 14px;
     }
 }
+
+
 @media (max-width: 400px) {
     .start {
         font-size: 16px;
@@ -368,6 +380,7 @@
     }
 }
 
+
 @media only screen and (max-height: 400px) {
     canvas {
         height: 100vh;
@@ -375,5 +388,4 @@
     .game-content {
         height: 100vh;
     }
-    
 }
