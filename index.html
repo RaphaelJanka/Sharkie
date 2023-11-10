@@ -53,6 +53,7 @@
                 <button class="help" onclick="showInstructions()">
                     <span>Help</span>
                 </button>
+                <img class="help-mobile" src="img/help.png" alt="help" onclick="showInstructions()">
                 <div class="d-flex flex-column align-items-center mb-50">
                     <div class="bubble-container d-flex flex-column align-items-center">
                         <div class="d-flex w-100 justify-content-center">
@@ -65,9 +66,10 @@
                             <img id="startBubble2" src="img/1.Sharkie/4.Attack/Bubble trap/Bubble.png" alt="" class="bubble-loading-3 hidden">
                         </div>
                     </div>
-                    <button class="d-flex justify-content-center align-items-center start" onclick="startGame()">
+                    <button class="justify-content-center align-items-center start">
                         <span>Start</span>
                     </button>
+                    <img class="start-mobile" src="img/start.png" alt="start" onclick="startGame()">
                 </div>
             </div>
         </div>
@@ -75,52 +77,54 @@
         
         <div id="gameOver" class="lose-screen position-absolute d-flex justify-content-around align-items-center flex-column d-none">
             <img src="img/6.Botones/Tittles/Game Over/Recurso 11.png" alt="" class="game-over-img">
-            <button class="try-again d-flex justify-content-center align-items-center" onclick="restartGame()">
+            <button class="try-again justify-content-center align-items-center" onclick="restartGame()">
                 <span>Try Again</span>
             </button>
+            <img class="try-again-mobile" src="img/try-again.png" alt="try again" onclick="restartGame()">
         </div>
+
         <div id="gameWon" class="win-screen position-absolute d-none">
             <div class="win-background d-flex justify-content-around flex-column align-items-center">
                 <div id="result" class="result-screen rounded-5 hidden position-relative">
                     <img src="img/3. Background/Barrier/2.png" alt="" class="barrier">
                     <div id="finalScore" class="d-flex position-absolute"></div>
                 </div>
-                <button class="restart d-flex justify-content-center align-items-center" onclick="restartGame()">
+                <button class="restart justify-content-center align-items-center" onclick="restartGame()">
                     <span>Restart</span>
                 </button>
-                <button class=" d-flex justify-content-center align-items-center position-absolute score" onclick="showScore()">
+                <img class="restart-mobile" src="img/restart.png" alt="restart" onclick="restartGame()">
+                <button class="justify-content-center align-items-center position-absolute score" onclick="showScore()">
                     <span>Score</span>
                 </button>
-                
-            </div>
-        </div>
-        <div id="turnDeviceScreen" class="turn align-items-center justify-content-center">
-            <div class="message-box d-flex align-items-center">
-                <span>Please turn your device</span>
+                <img class="score-mobile" src="img/score.png" alt="score" onclick="showScore()">
             </div>
         </div>
 
+        <div id="turnDeviceScreen" class="turn align-items-center justify-content-center">
+            <img class="message" src="img/turn-device.png" alt="turn device">
+        </div>
         <section id="mobile" class="mobile-buttons-container d-flex justify-content-between">
             <div class="d-flex flex-column movement-container">
                 <div class="d-flex justify-content-center">
                     <button id="up_button" class="mobile-buttons d-flex justify-content-center align-items-center up">
-                        <span>></span>
+                        <img src="img/move.png" alt="" class="up">
                     </button>
                 </div>
                 <div class="d-flex justify-content-between">
                     <button id="left_button" class="mobile-buttons d-flex justify-content-center align-items-center left">
-                        <span>></span>
+                        <img src="img/move.png" alt="" class="left">
                     </button>
                     <button id="right_button" class="mobile-buttons d-flex justify-content-center align-items-center">
-                        <span>></span>
+                        <img src="img/move.png" alt="" class="right">
                     </button>
                 </div>
                 <div class="d-flex justify-content-center">    
                     <button id="down_button" class="mobile-buttons d-flex justify-content-center align-items-center down">
-                        <span>></span>
+                        <img src="img/move.png" alt="" class="down">
                     </button>
                 </div>
             </div>
+
             <div class="attack-container d-flex align-items-center">
                 <button id="slap_button" class="attack-buttons-mobile d-flex justify-content-center align-items-center">
                     <img src="img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.png" alt="" class="slap-button">

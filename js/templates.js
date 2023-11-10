@@ -10,17 +10,19 @@ function showMovementInfo() {
                     <img src="img/1.Sharkie/3.Swim/3.png" alt="sharkie-swimming" class="sharkie-movement">
                 </div>
                 <div class="d-flex width-50 flex-column align-items-center justify-content-center gap-4">
-                    <button class="back d-flex justify-content-center align-items-center" onclick="hideInstructions()">
+                    <button class="back justify-content-center align-items-center" onclick="hideInstructions()">
                         <span>X</span>
                     </button>
+                    <img class="x-mobile" src="img/x-button.png" alt="x" onclick="hideInstructions()">
                     <img src="img/6.Botones/Key/arrow keys.png" alt="arrow keys" class="arrow-keys mt-80">
                     <span class="fs-32">Move</span>
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-3">
-                <button class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackFinSlap()">
+                <button class="info-buttons rounded-3 align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackFinSlap()">
                     <span>Next</span>
                 </button>
+                <img class="next-mobile" src="img/next.png" alt="next" onclick="renderInfoAttackFinSlap()">
             </div>
         </div>
     `;
@@ -40,22 +42,26 @@ function showAttackInfoFinSlap() {
                     <img src="img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.3.png" alt="pufferfish-orange" class="fish-info">
                 </div>
                 <div class="d-flex width-50 flex-column align-items-center justify-content-center gap-4">
-                    <button class="back d-flex justify-content-center align-items-center" onclick="hideInstructions()">
+                    <button class="back justify-content-center align-items-center" onclick="hideInstructions()">
                         <span>X</span>
                     </button>
-                    <div class="attack-buttons rounded-3 d-flex justify-content-center align-items-center mt-80">
+                    <img class="x-mobile" src="img/x-button.png" alt="x" onclick="hideInstructions()">
+                    <div class="attack-buttons rounded-3 justify-content-center align-items-center mt-80">
                         <span>S</span>
                     </div>
+                    <img class="s-mobile mt-80" src="img/s-button.png" alt="s">
                     <span class="fs-32">Fin Slap</span>
                 </div>
             </div>
             <div class="d-flex gap-5 justify-content-center mt-3">
-                <button class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoMovement()">
+                <button class="info-buttons rounded-3 align-items-center justify-content-center hover-buttons" onclick="renderInfoMovement()">
                     <span>Back</span>
                 </button>
-                <button class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackBubble()">
+                <img class="back-mobile" src="img/back.png" alt="back" onclick="renderInfoMovement()">
+                <button class="info-buttons rounded-3 align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackBubble()">
                     <span>Next</span>
                 </button>
+                <img class="next-mobile" src="img/next.png" alt="next" onclick="renderInfoAttackBubble()">
             </div>
         </div>
     `;
@@ -75,20 +81,23 @@ function showAttackInfoBubble() {
                     <img src="img/2.Enemy/2 Jelly fish/Dead/green/g1.png" alt="jellyfish" class="jellyfish-info">
                 </div>
                 <div class="d-flex width-50 flex-column align-items-center justify-content-center gap-4">
-                    <button class="back d-flex justify-content-center align-items-center" onclick="hideInstructions()">
+                    <button class="back justify-content-center align-items-center" onclick="hideInstructions()">
                         <span>X</span>
                     </button>
+                    <img class="x-mobile" src="img/x-button.png" alt="x" onclick="hideInstructions()">
                     <img src="img/6.Botones/Key/Space Bar key.png" alt="space" class="space mt-80">
                     <span class="fs-32">Shoot Bubble</span>
                 </div>
             </div>
             <div class="d-flex gap-5 justify-content-center mt-3">
-                <button class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackFinSlap()">
+                <button class="info-buttons rounded-3 align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackFinSlap()">
                     <span>Back</span>
                 </button>
-                <button class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackPoison()">
+                <img class="back-mobile" src="img/back.png" alt="back" onclick="renderInfoAttackFinSlap()">
+                <button class="info-buttons rounded-3 align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackPoison()">
                     <span>Next</span>
                 </button>
+                <img class="next-mobile" src="img/next.png" alt="next" onclick="renderInfoAttackPoison()">
             </div>
         </div>
     `;
@@ -108,12 +117,14 @@ function showAttackInfoPoison() {
                     <img src="img/2.Enemy/3 Final Enemy/Hurt/2.png" alt="endboss" class="endboss-info">
                 </div>
                 <div class="d-flex width-50 flex-column align-items-center justify-content-center gap-4">
-                    <button class="back d-flex justify-content-center align-items-center" onclick="hideInstructions()">
+                    <button class="back justify-content-center align-items-center" onclick="hideInstructions()">
                         <span>X</span>
                     </button>
-                    <div class="attack-buttons rounded-3 d-flex justify-content-center align-items-center mt-80 mt-responsive">
+                    <img class="x-mobile" src="img/x-button.png" alt="x" onclick="hideInstructions()">
+                    <div class="attack-buttons rounded-3 justify-content-center align-items-center mt-80 mt-responsive">
                         <span>D</span>
                     </div>
+                    <img class="d-mobile mt-80" src="img/d-button.png" alt="d">
                     <div class="d-flex flex-column align-items-center justify-content-center">
                         <span class="fs-responsive">Shoot Poison Bubble</span>
                         <span class="subline">(For Endboss)</span>
@@ -121,9 +132,10 @@ function showAttackInfoPoison() {
                 </div>
             </div>
             <div class="d-flex gap-5 justify-content-center mt-3">
-                <button class="info-buttons rounded-3 d-flex align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackBubble()">
+                <button class="info-buttons rounded-3 align-items-center justify-content-center hover-buttons" onclick="renderInfoAttackBubble()">
                     <span>Back</span>
                 </button>
+                <img class="back-mobile" src="img/back.png" alt="back" onclick="renderInfoAttackBubble()">
             </div>
         </div>
     `;

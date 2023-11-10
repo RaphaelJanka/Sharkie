@@ -63,6 +63,7 @@ h1 {
     width: 170px;
     font-size: 32px;
     margin-left: 30%;
+    display: flex;
 }
 .start:hover {
     background-color: #531a82;
@@ -132,6 +133,7 @@ h1 {
     border-radius: 10px;
     border: 3px solid white;
     cursor: pointer;
+    display: flex;
 }
 .try-again:hover {
     background-color: #531a82;
@@ -170,7 +172,7 @@ h1 {
     border-radius: 10px;
     border: 3px solid white;
     cursor: pointer;
-   
+    display: flex;
 }
 .restart:hover {
     background-color: #531a82;
@@ -191,6 +193,7 @@ h1 {
     cursor: pointer;
     top: 20px;
     left: 20px;
+    display: flex;
 }
 .score:hover {
     background-color: #531a82;
@@ -236,16 +239,9 @@ h1 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #242452e8;
+    background: #242452fa;
     z-index: 3;
     display: none;
-}
-.message-box {
-    padding: 10px 16px;
-    border-radius: 10px;
-    background-color: #7fffe0d4;
-    color: #531a82 !important;
-    border: 3px solid #ffffffcf;
 }
 .screen-mode {
     height: 28px;
@@ -281,6 +277,7 @@ h1 {
     top: 10px;
     font-size: 14px;
     cursor: pointer;
+    display: flex;
 }
 .back:hover {
     background-color: #531a82;
@@ -316,6 +313,7 @@ h1 {
     border: 3px solid white;
     width: 80px;
     cursor: pointer;
+    display: flex;
 }
 .attack-buttons {
     background-color: #7fffe0;
@@ -324,6 +322,7 @@ h1 {
     border: 3px solid white;
     width: 67px;
     cursor: pointer;
+    display: flex;
 }
 .fish-info{
     width: 92px;

@@ -5,48 +5,69 @@
 }
 
 .mobile-buttons {
-    background-color: #531a82;
-    border-radius: 32px;
     width: 40px;
     height: 40px;
-    border: 2px solid white;
-    font-size: 20px;
-    color: white;
-    
+    border-radius: 100%;
+    outline: 0;
+    border: 0;
+    background-color: white;
 }
+
+
 .mobile-buttons:active {
     background-color: #6de0c3;
     box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.8);
     color: #531a82;
 }
+
+
 .movement-container {
     width: 125px;
     margin-left: 10px;
     margin-bottom: 10px;
 }
-.up {
-    transform: rotate(-90deg);
+.movement-container img {
+    width: 40px;
+    height: 40px;
 }
+
+.right {
+    transform: rotate(90deg);
+}
+
+
 .down {
     transform: rotate(90deg);
 }
+
+
 .left {
-    transform: scaleX(-1);
+    transform: rotate(-45deg);
 }
+
+
 .bubble-button {
     width: 20px;
 }
+
+
 .slap-button {
     width: 24px;
     margin-left: 3px;
 }
+
+
 .poison-button {
     width: 24px;
 }
+
+
 .attack-container {
     gap: 24px;
     margin-right: 20px;
 }
+
+
 .attack-buttons-mobile {
     background-color: #531a82;
     border-radius: 32px;
@@ -54,7 +75,170 @@
     height: 40px;
     border: 2px solid white;
 }
+
+
 .attack-buttons-mobile:active {
     background-color: #6de0c3;
     box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.8);
+}
+
+
+.start-mobile {
+    width: 200px;
+    display: none;
+    margin-left: 30%;
+    cursor: pointer;
+}
+
+
+.help-mobile {
+    width: 60px;
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+
+.x-mobile {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 33px;
+    display: none;
+    cursor: pointer;
+}
+
+
+.next-mobile {
+    cursor: pointer;
+    width: 110px;
+    display: none;
+}
+
+
+.s-mobile {
+    width: 70px;
+    display: none;
+    cursor: pointer;
+}
+
+
+.back-mobile {
+    cursor: pointer;
+    width: 110px;
+    display: none;
+}
+
+
+.d-mobile {
+    cursor: pointer;
+    width: 70px;
+    display: none;
+}
+
+.try-again-mobile {
+    cursor: pointer;
+    display: none;
+    width: 170px;
+    height: 60px;
+}
+
+
+.restart-mobile {
+    cursor: pointer;
+    display: none;
+    width: 170px;
+    height: 60px;
+}
+
+
+.score-mobile {
+    cursor: pointer;
+    display: none;
+    width: 70px;
+    top: 20px;
+    left: 20px;
+    position: absolute;
+}
+
+@media (max-width: 900px) {
+    .start-mobile {
+        display: block;
+    }
+    .help-mobile {
+        display: block;
+    }
+    .x-mobile {
+        display: block;
+    }
+    .next-mobile {
+        display: block;
+    }
+    .s-mobile {
+        display: block;
+    }
+    .back-mobile {
+        display: block;
+    }
+    .d-mobile {
+        display: block;
+    }
+    .restart-mobile {
+        display: block;
+    }
+    .try-again-mobile {
+        display: block;
+    }
+    .score-mobile {
+        display: block;
+    }
+    .help {
+        display: none;
+    }
+    .start {
+        display: none;
+    }
+    .back {
+        display: none;
+    }
+    .info-buttons {
+        display: none;
+    }
+    .attack-buttons {
+        display: none;
+    }
+    .restart {
+        display: none;
+    }
+    .score {
+        display: none;
+    }
+    .try-again {
+        display: none;
+    }
+}
+
+@media (max-width: 570px) {
+    .start-mobile {
+        width: 100px;
+    }
+    .help-mobile {
+        width: 30px;
+    }
+    .try-again-mobile {
+        width: 100px;
+        height: 40px;
+    }
+    .restart-mobile {
+        width: 100px;
+        height: 40px;
+    }
+    .next-mobile {
+        width: 50px;
+    }
+    .back-mobile {
+        width: 50px;
+    }
 }
